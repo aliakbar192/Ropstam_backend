@@ -1,14 +1,14 @@
-const express=require("express")
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-const helmet = require("helmet");
-const xss = require("xss-clean");
-const cors = require("./cors");
+const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const cors = require('./cors');
 const app = express();
-const mongoose = require("mongoose");
-const ApiError = require("../utils/ApiError");
-const routes = require("../routes");
-const { httpStatus, message } = require("../utils/constant");
+const mongoose = require('mongoose');
+const ApiError = require('../utils/ApiError');
+const routes = require('../routes');
+const { httpStatus, message } = require('../utils/constant');
 
 require('dotenv').config();
 
@@ -30,25 +30,24 @@ app.use(express.urlencoded({ extended: true }));
 
 // sanitize request data
 app.use(xss());
- 
 
 // setup cors
 cors(app);
 
 // api routes
-app.use("/api", routes);
+app.use('/api', routes);
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, message.NOT_FOUND));
+    next(new ApiError(httpStatus.NOT_FOUND, message.NOT_FOUND));
 });
-
 
 // connect mongoDb Cluster
 mongoose
-  .connect(`${process.env.Database}`)
-  .then(() => console.log("connected to database"))
-  .catch(() => console.error("could not connect"));
+    .connect(`${process.env.Database}`)
+    .then(() => console.log('connected to database'))
+    .catch(() => console.error('could not connect'));
+mongoose.set('bufferTimeoutMS', 30000);
 
 //export app
 module.exports = app;

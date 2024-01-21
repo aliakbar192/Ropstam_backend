@@ -1,9 +1,9 @@
-const cors = require("cors");
+const cors = require('cors');
 
 module.exports = (app) => {
-  const corsOption = {
-    origin: true,
-    methods: "OPTION,GET,POST,PUT,DELETE",
-  };
-  app.use(cors(corsOption));
+    const corsOption = {
+        origin: true,
+        methods: 'OPTION,GET,POST,PUT,DELETE',
+    };
+    app.use(cors(corsOption));
 };
