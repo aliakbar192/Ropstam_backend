@@ -28,9 +28,14 @@ const isPasswordMatch = async function (password, userId) {
     console.log(userId);
     return bcrypt.compare(password, user.password);
 };
+const getUserById = async (id) => {
+    let users = await User.findOne({ _id: id });
+    return users;
+};
 
 module.exports = {
     createUser,
     gatUserByEmail,
     isPasswordMatch,
+    getUserById,
 };

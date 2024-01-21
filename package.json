@@ -28,6 +28,8 @@
     "nodemailer": "^6.9.8",
     "nodemon": "^3.0.3",
     "npm": "^10.3.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
     "winston": "^3.11.0",
     "xss-clean": "^0.1.4"
   }

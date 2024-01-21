@@ -9,6 +9,8 @@ const mongoose = require('mongoose');
 const ApiError = require('../utils/ApiError');
 const routes = require('../routes');
 const { httpStatus, message } = require('../utils/constant');
+const passport = require('passport');
+const { jwtStrategy } = require('./passport');
 
 require('dotenv').config();
 
@@ -33,6 +35,10 @@ app.use(xss());
 
 // setup cors
 cors(app);
+
+// jwt authentication
+app.use(passport.initialize());
+passport.use('jwt', jwtStrategy);
 
 // api routes
 app.use('/api', routes);

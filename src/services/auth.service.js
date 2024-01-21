@@ -48,7 +48,7 @@ const loginUserWithEmail = async (body) => {
     const userWithoutMongooseFields = user.toObject();
     delete userWithoutMongooseFields.password;
     console.log('userWithoutMongooseFields', userWithoutMongooseFields);
-    const token = jwt.sign({ user: userWithoutMongooseFields }, process.env.jwt_secret_key, {
+    const token = jwt.sign({ _id: user_id, tokenTypes: 'AUTH' }, process.env.jwt_secret_key, {
         expiresIn: process.env.JWT_expiresIn || '30d',
     });
     return { user: userWithoutMongooseFields, token };
