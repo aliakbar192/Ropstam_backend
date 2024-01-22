@@ -18,7 +18,7 @@ Before running the server, make sure you have the following installed:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/your-repo.git
+    git clone https://github.com/aliakbar192/Ropstam_backend.git
     cd your-repo
     ```
 
