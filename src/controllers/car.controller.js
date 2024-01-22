@@ -25,7 +25,7 @@ const getAllCarsByUserId = catchAsync(async (req, res) => {
     // Send a JSON response with a success message and the list of cars
     res.json(
         new ApiResponse(httpStatus.OK, message.SUCCESS, {
-            cars: cars,
+            car: cars,
         }),
     );
 });
@@ -59,7 +59,7 @@ const getOneCarById = catchAsync(async (req, res) => {
 // Define an asynchronous function to update a car by its ID
 const updateCarById = catchAsync(async (req, res) => {
     // Call the carService to update a car by its ID using request body data
-    const car = await carService.updateCarById(req.params.id, req.body);
+    const car = await carService.UpdateCarById(req.params.id, req.body);
 
     // Send a JSON response with a success message and the updated car information
     res.json(

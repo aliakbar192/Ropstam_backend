@@ -36,6 +36,15 @@ app.use(xss());
 // setup cors
 cors(app);
 
+// Set Content Security Policy (CSP) headers
+app.use((req, res, next) => {
+    res.setHeader(
+        'Content-Security-Policy',
+        "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'self'; media-src 'self'",
+    );
+    return next();
+});
+
 // jwt authentication
 app.use(passport.initialize());
 passport.use('jwt', jwtStrategy);

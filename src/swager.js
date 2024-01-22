@@ -89,8 +89,9 @@ swaggerSpec.definitions = {
             page: { type: 'number' },
             user_id: { type: 'string' },
             pageSize: { type: 'number' },
+            category: { type: 'string' },
         },
-        required: ['page', 'user_id', 'pageSize'],
+        required: ['page', 'user_id', 'pageSize', 'category'],
     },
 };
 

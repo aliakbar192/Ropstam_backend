@@ -22,12 +22,17 @@ const getAllCarsByUserId = async (body) => {
             throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid pagination parameters');
         }
 
+        const query = { user_id: body.user_id };
+        if (body.category && body.category !== 'All') {
+            query.category = body.category;
+        }
+        console.log(query);
         const skip = Math.max((body.page - 1) * body.pageSize, 0);
         console.log('Skip:', skip);
 
-        const cars = await Car.find({ user_id: body.user_id }).skip(skip).limit(body.pageSize);
+        const cars = await Car.find(query).skip(skip).limit(body.pageSize);
 
-        const totalCount = await Car.countDocuments({ user_id: body.user_id });
+        const totalCount = await Car.countDocuments(query);
 
         const totalPages = Math.ceil(totalCount / body.pageSize);
 
@@ -37,6 +42,7 @@ const getAllCarsByUserId = async (body) => {
         throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, message.INTERNAL_SERVER_ERROR);
     }
 };
+
 const deleteCarById = async (id) => {
     try {
         const deletedCar = await Car.deleteOne({ _id: id });

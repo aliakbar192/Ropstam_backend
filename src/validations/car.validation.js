@@ -18,6 +18,7 @@ const getAllCarByUserId = {
         page: Joi.number().required(),
         user_id: Joi.string().required(),
         pageSize: Joi.number().required(),
+        category: Joi.string().required(),
     }),
 };
 const deleteCarById = {
