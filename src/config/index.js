@@ -11,7 +11,7 @@ const routes = require('../routes');
 const { httpStatus, message } = require('../utils/constant');
 const passport = require('passport');
 const { jwtStrategy } = require('./passport');
-
+const swagger = require('../swager');
 require('dotenv').config();
 
 // Setup BodyParser
@@ -42,6 +42,7 @@ passport.use('jwt', jwtStrategy);
 
 // api routes
 app.use('/api', routes);
+app.use('/api-docs', swagger.serve, swagger.setup);
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
@@ -55,5 +56,7 @@ mongoose
     .catch(() => console.error('could not connect'));
 mongoose.set('bufferTimeoutMS', 30000);
 
+// handle error
+require('./error')(app);
 //export app
 module.exports = app;

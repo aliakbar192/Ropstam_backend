@@ -1,3 +1,4 @@
+// Function to pick specified keys from an object
 const pick = (object, keys) => {
     return keys.reduce((obj, key) => {
         if (object && Object.prototype.hasOwnProperty.call(object, key)) {
@@ -7,6 +8,7 @@ const pick = (object, keys) => {
     }, {});
 };
 
+// Function to drop specified keys from an object
 const drop = (object, keys) => {
     let obj = { ...object };
     keys.forEach((key) => {
@@ -15,5 +17,6 @@ const drop = (object, keys) => {
     return obj;
 };
 
+// Export the pick and drop functions for use in other modules
 module.exports.pick = pick;
 module.exports.drop = drop;

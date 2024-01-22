@@ -1,6 +1,7 @@
+// Object containing standardized messages for API responses
 const messages = {
     SUCCESS: 'Success!',
-    USER_ALREADY_EXIST: 'User with this email is already exist',
+    USER_ALREADY_EXIST: 'User with this email already exists',
     INTERNAL_SERVER_ERROR: 'Oops! Something went wrong.',
     NOT_FOUND: 'Not Found.',
     INSUFFICIENT_BALANCE: 'INSUFFICIENT BALANCE TO ACTIVATE THIS CUSTOMER',
@@ -10,6 +11,7 @@ const messages = {
     NOT_SUPPORTED: 'Not supported yet',
 };
 
+// Object containing HTTP status codes for API responses
 const httpStatus = {
     CONTINUE: 100,
     SWITCHING_PROTOCOLS: 101,
@@ -68,5 +70,6 @@ const httpStatus = {
     NETWORK_AUTHENTICATION_REQUIRED: 511,
 };
 
+// Export the messages and HTTP status codes for use in other modules
 module.exports.message = messages;
 module.exports.httpStatus = httpStatus;

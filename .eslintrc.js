@@ -1,3 +1,4 @@
+// ESLint configuration
 module.exports = {
     env: {
         browser: true,
@@ -20,6 +21,6 @@ module.exports = {
         ecmaVersion: 'latest',
     },
     rules: {
-        camelcase: 'off',
+        camelcase: 'off', // Allowing camelCase for variable and function names
     },
 };
